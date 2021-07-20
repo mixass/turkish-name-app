@@ -1,5 +1,5 @@
 var LastWord = "";
-const words = ['ayna','elif','film','fincan','fil','yelken','ne','bardak','kase','tabak','kaşık','köpek','kedi','kuş','şaka','ev','koltuk','su'];
+const words = ['erkek', 'tarçın','sandalye','kap','oyuncak','reklam','ilim','halı','ışık', 'maymun','şişe','poşet','takı','market','para','ağaç','çamur','ayna','elif','film','fincan','fil','yelken','ne','bardak','kase','tabak','ayak','van', 'masa', 'makas','kadın' ,'kaşık','köpek','kedi','kuş','şaka','ev','koltuk','su'];
 var CurrentlyPoint = 0
 function startJs() {
     var word = document.getElementById('word').value;
@@ -20,11 +20,7 @@ function setword(word) {
 
 function checkWord(word) {
     var found = words.includes(word);
-    var use = OldWords.includes(word);
-    console.log(OldWords);
-    if (found === true && use === false){
-        return true
-    }
+    return found
 }
 
 function checkLastLetter(word) {
