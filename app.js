@@ -1,39 +1,52 @@
-var LastWord = "";
-const words = ['erkek', 'tarçın','sandalye','kap','oyuncak','reklam','ilim','halı','ışık', 'maymun','şişe','poşet','takı','market','para','ağaç','çamur','ayna','elif','film','fincan','fil','yelken','ne','bardak','kase','tabak','ayak','van', 'masa', 'makas','kadın' ,'kaşık','köpek','kedi','kuş','şaka','ev','koltuk','su'];
-var CurrentlyPoint = 0
+var LastWord = "UMUT";
+var CurrentlyPoint = 0;
+var OldPoint = 0;
+var UsedWords = [
+    "Umut",
+]
 function startJs() {
     var word = document.getElementById('word').value;
+    word = word.toUpperCase();
     if (checkWord(word) && checkLastLetter(word)) {
         setword(word);
-        checkLastLetter(word);
     }else{
-        console.log('boyle bir kelime yok')
         point('-')
     }
+    document.getElementById("title").innerHTML = "Kullanılan son kelime";
 }
 
 function setword(word) {
     document.getElementById("nowword").innerHTML = word;
     point('+')
     LastWord = word;
+    UsedWords.push(word);
 }
 
 function checkWord(word) {
     var found = words.includes(word);
-    return found
+    var oldfound = UsedWords.includes(word);
+    if (found === true && oldfound === false) {
+        seconds = 10;
+        clearInterval(myVar);
+        setInterval(countdownstart,1000);
+        return true
+    }
+    if (found === false) {
+        uyari("Boyle bir isim yok");
+    }
+    if (oldfound === true) {
+        uyari("Daha once kullanilmis");
+    }
 }
 
 function checkLastLetter(word) {
     var FirstLetter = word.slice(0,1);
-    var lastLetterofLastWord = LastWord.slice(-1)
-    console.log('Son harf : '+lastLetterofLastWord,'İlk harf : '+FirstLetter)
-    if (lastLetterofLastWord === '') {
-        return true;
-    }
+    var lastLetterofLastWord = LastWord.slice(-1);
     {
         if (lastLetterofLastWord === FirstLetter) {
             return true;
         }else{
+            uyari("Kelime son harf ile baslamali")
             return false;
         }
     }
@@ -42,11 +55,12 @@ function checkLastLetter(word) {
 function point(stat) {
     if (stat == '+') {
         CurrentlyPoint++;
-        console.log('+ geldi point')
-    }else{
+    }else {
         CurrentlyPoint--;
-        console.log('- geldi point')
     }
-    console.log(CurrentlyPoint)
     document.getElementById("point").innerHTML = CurrentlyPoint;
+}
+
+function uyari(text){
+    document.getElementById("uyari").innerHTML = text;
 }
