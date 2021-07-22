@@ -1,0 +1,14 @@
+body {
+    background-color: aquamarine;
+}
+.lastword {
+    background-color: black;
+    border-radius: 5%;
+}
+.point {
+    background-color: tomato;
+    border-radius: 5%;
+}
+.white {
+    color: whitesmoke;
+}
