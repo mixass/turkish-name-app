@@ -1,0 +1,15 @@
+body {
+    background-color: aquamarine;
+}
+.lastword {
+    background-color: black;
+    border-radius: 5%;
+}
+.currently-point {
+    background-color: tomato;
+    border-radius: 5%;
+    text-align: center;
+}
+.white {
+    color: whitesmoke;
+}
